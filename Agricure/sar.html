@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agricure - Smart Crop Care</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {font-family: Arial, sans-serif; background-color: #f8f9fa;}
+        .hero {background-color: #d0f0c0; padding: 60px 20px; text-align:center;}
+        .hero h1 {font-size:2.5rem; margin-bottom:20px;}
+        .hero p {font-size:1.2rem; margin-bottom:30px;}
+        .feature-card {transition: transform 0.3s; cursor:pointer;}
+        .feature-card:hover {transform: translateY(-5px);}
+        .logo-img {height:80px;}
+        .voice-btn {cursor:pointer;}
+        .footer {background:#343a40; color:white; padding:20px; text-align:center;}
+        .footer a {color:#4caf50; text-decoration:none;}
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="logo.jpg" alt="Agricure Logo" class="logo-img me-2">
+      Agricure
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+        <li class="nav-item"><a class="nav-link" href="#scanner">Scanner</a></li>
+        <li class="nav-item"><a class="nav-link" href="#shops">Shops</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <h1>Smart Crop Care with AI</h1>
+    <p>Detect crop diseases instantly, get guidance in your language, and locate nearby agri shops.</p>
+    <div class="d-flex justify-content-center gap-2 flex-wrap">
+        <button class="btn btn-success btn-lg" onclick="scrollToSection('features')">Learn More</button>
+        <button class="btn btn-outline-success btn-lg" onclick="scrollToSection('scanner')">Use Scanner</button>
+    </div>
+</section>
+
+<!-- Search & Filters -->
+<section class="container my-5">
+    <div class="row g-2">
+        <div class="col-md-8">
+            <input type="text" id="searchInput" class="form-control form-control-lg" placeholder="Search crop disease...">
+        </div>
+        <div class="col-md-2 d-flex align-items-center">
+            <button class="btn btn-outline-success w-100 voice-btn" onclick="startVoiceSearch()">
+                🎤 Voice Search
+            </button>
+        </div>
+        <div class="col-md-2">
+            <select class="form-select" id="languageSelector">
+                <option value="en">English</option>
+                <option value="hi">Hindi</option>
+                <option value="mr">Marathi</option>
+                <option value="ta">Tamil</option>
+            </select>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="container my-5">
+    <h2 class="text-center mb-4 text-success">Features</h2>
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="card feature-card text-center p-3">
+                <h5>Instant Detection</h5>
+                <p>Take a photo and AI detects crop diseases instantly.</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card feature-card text-center p-3">
+                <h5>Local Language Guidance</h5>
+                <p>Receive instructions in your preferred local language.</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card feature-card text-center p-3">
+                <h5>Nearby Shops</h5>
+                <p>Locate local shops with products and pricing info.</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card feature-card text-center p-3">
+                <h5>Improve Yield</h5>
+                <p>Reduce crop loss and boost productivity efficiently.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Scanner Section -->
+<section id="scanner" class="container my-5 text-center">
+    <h2 class="text-success mb-4">Scan Your Crops</h2>
+    <button class="btn btn-success btn-lg mb-3" onclick="alert('Scanner feature coming soon!')">Open Scanner</button>
+    <p>Use our scanner to detect crop diseases quickly and easily.</p>
+</section>
+
+<!-- Shops Section -->
+<section id="shops" class="container my-5 text-center">
+    <h2 class="text-success mb-4">Nearby Shops</h2>
+    <button class="btn btn-success btn-lg mb-3" onclick="alert('Shops list feature coming soon!')">View Shops</button>
+    <p>Find products and prices from local agri shops near you.</p>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>&copy; 2025 Agricure. All Rights Reserved. | Contact: 9009000900</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Scroll to section
+    function scrollToSection(id) {
+        document.getElementById(id).scrollIntoView({behavior: 'smooth'});
+    }
+
+    // Voice search (basic example)
+    function startVoiceSearch() {
+        if('webkitSpeechRecognition' in window) {
+            const recognition = new webkitSpeechRecognition();
+            recognition.lang = 'en-US';
+            recognition.onresult = function(event) {
+                document.getElementById('searchInput').value = event.results[0][0].transcript;
+            };
+            recognition.start();
+        } else {
+            alert('Voice search not supported in this browser.');
+        }
+    }
+</script>
+
+</body>
+</html>
